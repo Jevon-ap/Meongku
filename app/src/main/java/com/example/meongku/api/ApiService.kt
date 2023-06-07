@@ -1,7 +1,10 @@
 package com.example.meongku.api
 
+import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.api.login.LoginRequest
 import com.example.meongku.api.login.LoginResponse
+import com.example.meongku.api.register.RegisterRequest
+import com.example.meongku.api.register.RegisterResponse
 import com.example.meongku.api.user.UpdateUserRequest
 import com.example.meongku.api.user.UserResponse
 import com.example.meongku.api.user.editpassword.EditPasswordRequest
@@ -18,8 +21,17 @@ interface ApiService {
     @POST("v1/login")
     fun userLogin(@Body info: LoginRequest): Call<LoginResponse>
 
+    @POST("v1/register")
+    fun userRegister(@Body info: RegisterRequest): Call<RegisterResponse>
+
     @GET("v1/users/{uid}")
     fun getUserByUid(@Path("uid") uid: String): Call<UserResponse>
+
+    @GET("v1/cats")
+    fun getAllCats(): Call<CatResponse>
+
+    @GET("v1/cats/{id}")
+    fun getCatById(): Call<CatResponse>
 
     @POST("/v1/logout")
     fun logout(token: String): Call<ResponseBody>

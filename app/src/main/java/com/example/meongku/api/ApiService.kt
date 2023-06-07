@@ -6,11 +6,12 @@ import com.example.meongku.api.register.RegisterRequest
 import com.example.meongku.api.register.RegisterResponse
 import com.example.meongku.api.user.UpdateUserRequest
 import com.example.meongku.api.user.UserResponse
+import com.example.meongku.api.user.editpassword.EditPasswordRequest
+import com.example.meongku.api.user.editpassword.EditPasswordResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -33,4 +34,10 @@ interface ApiService {
         @Path("uid") uid: String,
         @Body body: UpdateUserRequest
     ): Call<ResponseBody>
+
+    @PUT("v1/users/{uid}/edit-password")
+    fun editPassword(
+        @Path("uid") uid: String,
+        @Body request: EditPasswordRequest
+    ): Call<EditPasswordResponse>
 }

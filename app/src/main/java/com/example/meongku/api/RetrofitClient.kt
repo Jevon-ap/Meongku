@@ -22,7 +22,7 @@ class RetrofitClient(private val userPreferences: UserPreferences) {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://c76db54d862b-wgapj5fkzq-et.a.run.app/")
+        .baseUrl("https://api-meongku-cjckv5ovwa-et.a.run.app/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

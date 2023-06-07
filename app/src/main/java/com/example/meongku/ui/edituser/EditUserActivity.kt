@@ -51,11 +51,13 @@ class EditUserActivity : AppCompatActivity() {
             val requestBody = UpdateUserRequest(name, phone)
 
             val uid = userPreferences.uid
-            val token = userPreferences.idToken
 
             retrofitClient.apiInstance().editUserByUid(uid!!, requestBody)
                 .enqueue(object : Callback<ResponseBody> {
-                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>)
+                    {
                         if (response.isSuccessful) {
                             Log.d("EditUser", "Edit user profile successful: ${response.body()?.string()}")
                             val intent = Intent(this@EditUserActivity, MainActivity::class.java)

@@ -17,6 +17,7 @@ import com.example.meongku.api.register.RegisterResponse
 import com.example.meongku.databinding.ActivityLoginBinding
 import com.example.meongku.databinding.ActivityRegisterBinding
 import com.example.meongku.preference.UserPreferences
+import com.example.meongku.ui.login.LoginActivity
 import com.example.meongku.ui.theme.SettingPreferences
 import com.example.meongku.ui.theme.ThemeViewModel
 import com.example.meongku.ui.theme.ThemeViewModelFactory
@@ -35,6 +36,8 @@ class RegisterActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        retrofitClient = RetrofitClient(UserPreferences(this))
+
         binding.registerButton.setOnClickListener {
             val email = binding.emailInput.text.toString()
             val password = binding.passwordInput.text.toString()
@@ -44,30 +47,24 @@ class RegisterActivity : AppCompatActivity() {
             retrofitClient.apiInstance().userRegister(RegisterRequest(email, password, name, phone)).enqueue(object :
                 Callback<RegisterResponse> {
                 override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>
+                    call: Call<RegisterResponse>,
+                    response: Response<RegisterResponse>
                 )
                 {
                     if (response.isSuccessful) {
-                        Log.d("LOGIN", "LOGIN: ${response.body()?.message}")
-                        response.body()?.data?.let {
-                            userPreferences.uid = it.uid
-                            userPreferences.idToken = it.idToken
-                            userPreferences.isLoggedIn = true
-                        }
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        Log.d("REGISTER", "REGISTER: ${response.body()?.message}")
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Log.d("LOGIN", "LOGIN: ${response.errorBody()?.string()}")
-                        Toast.makeText(this@LoginActivity, "", Toast.LENGTH_SHORT).show()
+                        Log.d("REGISTER", "REGISTER: ${response.errorBody()?.string()}")
+                        Toast.makeText(this@RegisterActivity, "", Toast.LENGTH_SHORT).show()
                     }
                 }
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.d("LOGIN", "${t.message}")
-                    Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_SHORT).show()
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    Log.d("REGISTER", "${t.message}")
+                    Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_SHORT).show()
                 }
             })
         }
     }
-}
 }

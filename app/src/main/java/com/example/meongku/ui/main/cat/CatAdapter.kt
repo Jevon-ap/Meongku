@@ -10,33 +10,32 @@ import com.bumptech.glide.Glide
 import com.example.meongku.R
 import com.example.meongku.api.catlist.Cat
 
-class CatAdapter(private val cats: List<Cat>) : RecyclerView.Adapter<CatAdapter.ViewHolder>() {
+// CatAdapter.kt
+class CatAdapter : RecyclerView.Adapter<CatViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cat, parent, false)
-        return ViewHolder(view)
+    private val catList = mutableListOf<CatItem>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
+        // Inflate the cat item layout and return a new view holder
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_item, parent, false)
+        return CatViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val cat = cats[position]
-        holder.bind(cat)
+    override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
+        // Bind the data from the list to the view holder
+        val catItem = catList[position]
+        holder.bind(catItem)
     }
 
     override fun getItemCount(): Int {
-        return cats.size
+        // Return the size of the list
+        return catList.size
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val catImage: ImageView = itemView.findViewById(R.id.image)
-        private val catTitle: TextView = itemView.findViewById(R.id.text_title)
-
-        fun bind(cat: Cat) {
-            // Load the cat image using Glide or any other image loading library
-            Glide.with(itemView.context)
-                .load(cat.photo)
-                .into(catImage)
-
-            catTitle.text = cat.race
-        }
+    fun updateData(newCatList: List<CatItem>) {
+        // Clear and update the list with new data
+        catList.clear()
+        catList.addAll(newCatList)
+        notifyDataSetChanged()
     }
 }

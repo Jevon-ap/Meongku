@@ -7,27 +7,27 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitClient(private val userPreferences: UserPreferences) {
+    class RetrofitClient(private val userPreferences: UserPreferences) {
 
-    private val authInterceptor = Interceptor { chain ->
-        val req = chain.request()
-        val idToken = userPreferences.idToken ?: ""
-        val requestHeaders = req.newBuilder()
-            .addHeader("Authorization", "$idToken")
+        private val authInterceptor = Interceptor { chain ->
+            val req = chain.request()
+            val idToken = userPreferences.idToken ?: ""
+            val requestHeaders = req.newBuilder()
+                .addHeader("Authorization", "$idToken")
+                .build()
+            chain.proceed(requestHeaders)
+        }
+        private val client = OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
             .build()
-        chain.proceed(requestHeaders)
-    }
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(authInterceptor)
-        .build()
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api-meongku-cjckv5ovwa-et.a.run.app/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
-        .build()
+        private val retrofit = Retrofit.Builder()
+            .baseUrl("https://api-meongku-cjckv5ovwa-et.a.run.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
 
-    fun apiInstance(): ApiService {
-        return retrofit.create(ApiService::class.java)
+        fun apiInstance(): ApiService {
+            return retrofit.create(ApiService::class.java)
+        }
     }
-}

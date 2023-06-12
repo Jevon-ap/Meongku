@@ -63,8 +63,9 @@ class CatListFragment : Fragment() {
                 override fun onResponse(call: Call<CatIdResponse>, response: Response<CatIdResponse>) {
                     if (response.isSuccessful) {
                         val catResponse = response.body()
-                        val cat = catResponse?.cat
-                        showCatDetails(cat)
+                        val catz = catResponse?.cat
+                        Log.d("SINI BANGGG", catz!!.race) // Log a debug message
+                        showCatDetails(catz)
                     } else {
                         // Handle error case
                     }
@@ -79,8 +80,15 @@ class CatListFragment : Fragment() {
 
         return view
     }
-
     private fun showCatDetails(cat: Cat?) {
-        // Implement your logic to show cat details (e.g., navigate to a new fragment/activity)
+        if (cat != null) {
+            val catDetailFragment = CatDetailFragment.newInstance(cat)
+            val fragmentManager = requireActivity().supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.container, catDetailFragment) // Replace fragmentContainer with your actual container ID
+            transaction.addToBackStack(null) // Add the fragment to the back stack (optional)
+            transaction.commit()
+        }
     }
+
 }

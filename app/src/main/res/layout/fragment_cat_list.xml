@@ -1,25 +1,12 @@
-<!-- fragment_cat_race_list.xml -->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cat Race List"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textStyle="bold" />
+    tools:context=".ui.main.cat.CatListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/catRaceRecyclerView"
+        android:id="@+id/catRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp" />
-
-</LinearLayout>
+        android:layout_height="match_parent" />
+</FrameLayout>

@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meongku.R
 import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.catlist.Cat
+import com.example.meongku.api.catlist.CatIdResponse
 import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.preference.UserPreferences
 import retrofit2.Call
@@ -51,8 +53,34 @@ class CatListFragment : Fragment() {
 
         // Create an instance of the CatListAdapter and set it to the RecyclerView
         catAdapter = CatListAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = catAdapter
 
+        // Set the click listener on the CatListAdapter
+        catAdapter.setOnItemClickListener { catId ->
+            // Call the API to get cat details by ID
+            retrofitClient.apiInstance().getCatById(catId).enqueue(object : Callback<CatIdResponse> {
+                override fun onResponse(call: Call<CatIdResponse>, response: Response<CatIdResponse>) {
+                    if (response.isSuccessful) {
+                        val catResponse = response.body()
+                        val cat = catResponse?.cat
+                        showCatDetails(cat)
+                    } else {
+                        // Handle error case
+                    }
+                }
+
+                override fun onFailure(call: Call<CatIdResponse>, t: Throwable) {
+                    Log.d("CATDETAILS", "${t.message}")
+                    Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
         return view
+    }
+
+    private fun showCatDetails(cat: Cat?) {
+        // Implement your logic to show cat details (e.g., navigate to a new fragment/activity)
     }
 }

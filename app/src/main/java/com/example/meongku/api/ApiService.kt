@@ -1,5 +1,6 @@
 package com.example.meongku.api
 
+import com.example.meongku.api.catlist.CatIdResponse
 import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.api.login.LoginRequest
 import com.example.meongku.api.login.LoginResponse
@@ -31,7 +32,7 @@ interface ApiService {
     fun getAllCats(): Call<CatResponse>
 
     @GET("v1/cats/{id}")
-    fun getCatById(): Call<CatResponse>
+    fun getCatById(@Path("id") id: Int): Call<CatIdResponse>
 
     @POST("/v1/logout")
     fun logout(token: String): Call<ResponseBody>

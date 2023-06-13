@@ -74,17 +74,4 @@ class CatDetailFragment : Fragment() {
         tvRasKucing.text = cat.race
         tvDeskripsiKucing.text = cat.desc
     }
-
-    companion object {
-        private const val ARG_CAT = "arg_cat"
-
-        fun newInstance(catId: Int): CatDetailFragment {
-            val args = Bundle().apply {
-                putInt(ARG_CAT, catId)
-            }
-            val fragment = CatDetailFragment()
-            fragment.arguments = args
-            return fragment
-        }
-     }
 }

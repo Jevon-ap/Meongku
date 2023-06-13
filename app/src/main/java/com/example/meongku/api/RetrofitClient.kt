@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
         private val authInterceptor = Interceptor { chain ->
             val req = chain.request()
-            val idToken = userPreferences.idToken ?: ""
+            val idToken = userPreferences.sessionId ?: ""
             val requestHeaders = req.newBuilder()
                 .addHeader("Authorization", "$idToken")
                 .build()

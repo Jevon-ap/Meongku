@@ -8,6 +8,6 @@ data class LoginResponse(
 ) {
     data class Data(
         val uid: String,
-        val idToken: String
+        val sessionId: String
     )
 }

@@ -16,7 +16,7 @@ import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-private const val FILENAME_FORMAT = "dd-MMM-yyyy"
+const val FILENAME_FORMAT = "dd-MMM-yyyy"
 
 val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,

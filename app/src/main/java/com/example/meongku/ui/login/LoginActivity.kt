@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("LOGIN", "LOGIN: ${response.body()?.message}")
                         response.body()?.data?.let {
                             userPreferences.uid = it.uid
-                            userPreferences.idToken = it.idToken
+                            userPreferences.sessionId = it.sessionId
                             userPreferences.isLoggedIn = true
                         }
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)

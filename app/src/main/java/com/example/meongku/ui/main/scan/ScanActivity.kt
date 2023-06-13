@@ -1,5 +1,6 @@
 package com.example.meongku.ui.main.scan
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -16,12 +17,30 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import com.example.meongku.R
+import com.example.meongku.api.ApiService
+import com.example.meongku.api.CatBreedAPI
+import com.example.meongku.api.RetrofitClient
 import com.example.meongku.databinding.ActivityScanBinding
+import com.example.meongku.preference.UserPreferences
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ScanActivity : AppCompatActivity() {
     private lateinit var binding : ActivityScanBinding
     private var imageCapture: ImageCapture? = null
     private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+    private lateinit var retrofitClient: RetrofitClient
+    private val api: ApiService = CatBreedAPI.api
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +83,7 @@ class ScanActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     Log.d("ScanActivity", "Photo saved.")
                     val myFile = photoFile
+                    uploadImage(myFile)
                     startScanResultActivity(myFile.absolutePath, cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
 
                 }
@@ -155,4 +175,162 @@ class ScanActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun uploadImage(file: File) {
+        // Membuat RequestBody instance dari file
+        val requestFile: RequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+
+        // Membuat MultipartBody.Part menggunakan file request body dan nama part ("image_file")
+        val body: MultipartBody.Part = MultipartBody.Part.createFormData("image_file", file.name, requestFile)
+
+        // Memanggil fungsi uploadImage() pada API
+        val call: Call<ResponseBody> = api.uploadImage(body)
+
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    Log.d("ScanActivity", "Image uploaded successfully!")
+                } else {
+                    // Kode yang dijalankan ketika request gagal
+                    Log.d("ScanActivity", "Image upload failed: ${response.errorBody()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                // Kode yang dijalankan ketika terjadi kesalahan saat melakukan request
+                Log.d("ScanActivity", "Error: ${t.message}")
+            }
+        })
+    }
 }
+
+
+
+
+
+//class ScanActivity : AppCompatActivity() {
+//
+//    private var imageCapture: ImageCapture? = null
+//    private lateinit var outputDirectory: File
+//    private lateinit var userPreferences: UserPreferences
+//    private lateinit var binding: ActivityScanBinding
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//        binding = ActivityScanBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        userPreferences = UserPreferences(this)
+//
+//        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+//
+//        cameraProviderFuture.addListener(Runnable {
+//            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+//
+//            val preview = Preview.Builder()
+//                .build()
+//                .also {
+//                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+//                }
+//
+//            Log.d("CameraXApp", "Preview initialized") // Log debug
+//
+//            imageCapture = ImageCapture.Builder()
+//                .build()
+//
+//            Log.d("CameraXApp", "ImageCapture initialized") // Log debug
+//
+//            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+//
+//            try {
+//                cameraProvider.unbindAll()
+//                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+//
+//                Log.d("CameraXApp", "Use cases bound to lifecycle")
+//
+//            } catch(exc: Exception) {
+//                Log.e("CameraXApp", "Use case binding failed", exc)
+//            }
+//
+//        }, ContextCompat.getMainExecutor(this))
+//
+//        binding.captureImage.setOnClickListener { takePhoto() }
+//
+//        outputDirectory = getOutputDirectory()
+//
+//    }
+//
+//    private fun takePhoto() {
+//        val imageCapture = imageCapture ?: return
+//
+//        val photoFile = File(
+//            outputDirectory,
+//            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".jpg")
+//
+//        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+//
+//        try {
+//            imageCapture.takePicture(
+//                outputOptions,
+//                ContextCompat.getMainExecutor(this),
+//                object : ImageCapture.OnImageSavedCallback {
+//
+//                    override fun onError(exc: ImageCaptureException) {
+//                        Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+//                    }
+//
+//                    override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+//                        Log.d("CameraXApp", "Image saved successfully") // Log debug
+//
+//                        uploadImageToServer(photoFile)
+//                    }
+//                })
+//        } catch (exc: Exception) {
+//            Log.e("CameraXApp", "Error taking picture", exc)
+//        }
+//    }
+//
+//    private fun getOutputDirectory(): File {
+//        val mediaDir = externalMediaDirs.firstOrNull()?.let {
+//            File(it, resources.getString(R.string.app_name)).apply { mkdirs() } }
+//        return if (mediaDir != null && mediaDir.exists())
+//            mediaDir else filesDir
+//    }
+//
+//    private fun uploadImageToServer(file: File) {
+//        try {
+//            val requestFile: RequestBody =
+//                RequestBody.create("image/jpg".toMediaTypeOrNull(), file)
+//            val body: MultipartBody.Part =
+//                MultipartBody.Part.createFormData("image", file.name, requestFile)
+//
+//// Membuat deskripsi
+//            val descriptionPart =
+//                MultipartBody.Part.createFormData("description", "your_description_here")
+//
+//            val retrofit = RetrofitClient(userPreferences)
+//            val call = retrofit.apiInstance().uploadImage(descriptionPart, body)
+//
+//            call.enqueue(object : Callback<ResponseBody> {
+//                override fun onResponse(
+//                    call: Call<ResponseBody>,
+//                    response: Response<ResponseBody>
+//                ) {
+//                    // setelah gambar diunggah, pergi ke halaman hasil
+//                    val intent = Intent(this@ScanActivity, ScanResultActivity::class.java)
+//                    startActivity(intent)
+//                }
+//
+//                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                    Toast.makeText(applicationContext, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//                    Log.e("CameraXApp", "Upload image to server failed: ${t.message}", t)
+//                }
+//            })
+//        } catch (e: Exception) {
+//            Toast.makeText(applicationContext, "Exception: ${e.message}", Toast.LENGTH_SHORT).show()
+//            Log.e("CameraXApp", "Exception in uploadImageToServer: ${e.message}", e)
+//        }
+//    }
+//
+//}

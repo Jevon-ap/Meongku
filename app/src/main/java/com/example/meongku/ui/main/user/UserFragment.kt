@@ -58,7 +58,7 @@ class UserFragment : Fragment() {
             startActivity(intent)
         }
         binding.buttonSignOut.setOnClickListener {
-            val token = userPreferences.idToken
+            val token = userPreferences.sessionId
             if (token != null) {
                 retrofitClient.apiInstance().logout(token).enqueue(object : Callback<ResponseBody> {
                     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

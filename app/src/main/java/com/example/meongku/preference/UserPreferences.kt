@@ -11,9 +11,9 @@ class UserPreferences(context: Context) {
         get() = prefs.getBoolean("isLoggedIn", false)
         set(value) = prefs.edit().putBoolean("isLoggedIn", value).apply()
 
-    var idToken: String?
-        get() = prefs.getString("idToken", null)
-        set(value) = prefs.edit().putString("idToken", value).apply()
+    var sessionId: String?
+        get() = prefs.getString("sessionId", null)
+        set(value) = prefs.edit().putString("sessionId", value).apply()
 
     var uid: String?
         get() = prefs.getString("uid", null)
@@ -26,7 +26,7 @@ class UserPreferences(context: Context) {
     fun clear() {
         prefs.edit().apply {
             remove("isLoggedIn")
-            remove("idToken")
+            remove("sessionId")
             remove("uid")
             remove("userData")
         }.apply()

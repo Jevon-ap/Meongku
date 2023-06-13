@@ -2,7 +2,6 @@ package com.example.meongku.preference
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.meongku.api.user.User
 
 class UserPreferences(context: Context) {
     private val prefs: SharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)

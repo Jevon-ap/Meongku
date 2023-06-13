@@ -33,15 +33,20 @@ class CatListFragment : Fragment() {
 
         retrofitClient = RetrofitClient(UserPreferences(requireContext()))
 
+        Log.d("SINI BANGGG", "BERHASIL SAMPAI SINI") // Log a debug message
+
         // Fetch the cat data using Retrofit
+
         retrofitClient.apiInstance().getAllCats().enqueue(object : Callback<CatResponse> {
             override fun onResponse(call: Call<CatResponse>, response: Response<CatResponse>) {
                 if (response.isSuccessful) {
                     val catResponse = response.body()
                     val cats = catResponse?.cats ?: emptyList()
+                    Log.d("SINI BANGGG", "BERHASIL SAMPAI SINI") // Log a debug message
                     catAdapter.updateCats(cats)
                 } else {
-                    // Handle error case
+                    Log.d("CAT LIST", "GAGAL: ${response.errorBody()?.string()}")
+                    Toast.makeText(requireContext(), "ERORR", Toast.LENGTH_SHORT).show()
                 }
             }
 

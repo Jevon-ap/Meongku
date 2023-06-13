@@ -28,9 +28,11 @@ class CatDetailFragment : Fragment() {
         tvDeskripsiKucing = view.findViewById(R.id.tvDeskripsiKucing)
 
         // Retrieve cat data from arguments
-        val cat = arguments?.getParcelable<Cat>("cat")
-        cat?.let { showCatDetails(it) }
+        val cat = arguments?.getParcelable<Cat>(ARG_CAT)
 
+        Log.d("CATDETAILS2", "BERHASIL ARGUMEN ${cat?.race}")
+
+        cat?.let { showCatDetails(it) }
         return view
     }
 
@@ -51,6 +53,8 @@ class CatDetailFragment : Fragment() {
         Glide.with(requireContext())
             .load(cat.photo)
             .into(ivFotoKucing)
+
+        Log.d("CATDETAILS", "MASUK KE DETAILS")
 
         // Set text values
         tvRasKucing.text = cat.race

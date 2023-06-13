@@ -3,7 +3,6 @@ package com.example.meongku.api
 import com.example.meongku.preference.UserPreferences
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,9 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
         private val authInterceptor = Interceptor { chain ->
             val req = chain.request()
-            val idToken = userPreferences.sessionId ?: ""
+            val sessionId = userPreferences.sessionId ?: ""
             val requestHeaders = req.newBuilder()
-                .addHeader("Authorization", "$idToken")
+                .addHeader("Authorization", "$sessionId")
                 .build()
             chain.proceed(requestHeaders)
         }

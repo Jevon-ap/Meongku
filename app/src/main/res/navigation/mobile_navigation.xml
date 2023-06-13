@@ -22,11 +22,25 @@
         android:name="com.example.meongku.ui.main.scan.ScanFragment"
         android:label="Scan"
         tools:layout="@layout/fragment_scan" />
+
     <fragment
         android:id="@+id/navigation_cat"
         android:name="com.example.meongku.ui.main.cat.CatListFragment"
+        android:label="Cat List">
+        <action
+            android:id="@+id/action_catListFragment_to_catDetailFragment"
+            app:destination="@id/navigation_cat_detail">
+            <argument
+                android:name="catId"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_cat_detail"
+        android:name="com.example.meongku.ui.main.cat.CatDetailFragment"
         android:label="Cat"
-        tools:layout="@layout/fragment_cat_list" />
+        tools:layout="@layout/fragment_cat_detail" />
 
     <fragment
         android:id="@+id/navigation_user"

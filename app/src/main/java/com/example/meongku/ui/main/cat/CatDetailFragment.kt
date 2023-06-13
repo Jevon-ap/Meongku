@@ -8,14 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.meongku.R
+import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.catlist.Cat
-
+import com.example.meongku.api.catlist.CatIdResponse
+import com.example.meongku.preference.UserPreferences
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 class CatDetailFragment : Fragment() {
     private lateinit var ivFotoKucing: ImageView
     private lateinit var tvRasKucing: TextView
     private lateinit var tvDeskripsiKucing: TextView
+    private lateinit var retrofitClient: RetrofitClient
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,36 +36,41 @@ class CatDetailFragment : Fragment() {
         tvRasKucing = view.findViewById(R.id.tvRasKucing)
         tvDeskripsiKucing = view.findViewById(R.id.tvDeskripsiKucing)
 
-        // Retrieve cat data from arguments
-        val cat = arguments?.getParcelable<Cat>(ARG_CAT)
+        retrofitClient = RetrofitClient(UserPreferences(requireContext()))
 
-        Log.d("CATDETAILS2", "BERHASIL ARGUMEN ${cat?.race}")
+        val catId = arguments?.getInt("catId")
 
-        cat?.let { showCatDetails(it) }
+        Log.d("CATDETAILS", catId.toString())
+
+        if (catId != null) {
+            Log.d("CATDETAILS", "BERHASIL")
+
+            retrofitClient.apiInstance().getCatById(catId).enqueue(object : Callback<CatIdResponse> {
+                override fun onResponse(call: Call<CatIdResponse>, response: Response<CatIdResponse>) {
+                    if (response.isSuccessful) {
+                        val catResponse = response.body()
+                        val cat = catResponse?.cat
+                        cat?.let { showCatDetails(it) }
+                    } else {
+                        // Handle error case
+                    }
+                }
+
+                override fun onFailure(call: Call<CatIdResponse>, t: Throwable) {
+                    Log.d("CATDETAILS", "${t.message}")
+                    Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val cat = arguments?.getParcelable<Cat>(ARG_CAT)
-        if (cat != null) {
-            Log.d("CATDETAILS", "BERHASIL ${cat.race}")
-        } else {
-            Log.d("CATDETAILS", "GAGAL")
-        }
-    }
-
-
     private fun showCatDetails(cat: Cat) {
-        // Load image using Glide
         Glide.with(requireContext())
             .load(cat.photo)
             .into(ivFotoKucing)
 
-        Log.d("CATDETAILS", "MASUK KE DETAILS")
-
-        // Set text values
         tvRasKucing.text = cat.race
         tvDeskripsiKucing.text = cat.desc
     }
@@ -64,14 +78,13 @@ class CatDetailFragment : Fragment() {
     companion object {
         private const val ARG_CAT = "arg_cat"
 
-        fun newInstance(cat: Cat): CatDetailFragment {
+        fun newInstance(catId: Int): CatDetailFragment {
             val args = Bundle().apply {
-                putParcelable(ARG_CAT, cat)
+                putInt(ARG_CAT, catId)
             }
             val fragment = CatDetailFragment()
             fragment.arguments = args
             return fragment
         }
-    }
-
+     }
 }

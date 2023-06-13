@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meongku.R
@@ -63,37 +65,11 @@ class CatListFragment : Fragment() {
 
         // Set the click listener on the CatListAdapter
         catAdapter.setOnItemClickListener { catId ->
-            // Call the API to get cat details by ID
-            retrofitClient.apiInstance().getCatById(catId).enqueue(object : Callback<CatIdResponse> {
-                override fun onResponse(call: Call<CatIdResponse>, response: Response<CatIdResponse>) {
-                    if (response.isSuccessful) {
-                        val catResponse = response.body()
-                        val catz = catResponse?.cat
-                        Log.d("SINI BANGGG", catz!!.race) // Log a debug message
-                        showCatDetails(catz)
-                    } else {
-                        // Handle error case
-                    }
-                }
-
-                override fun onFailure(call: Call<CatIdResponse>, t: Throwable) {
-                    Log.d("CATDETAILS", "${t.message}")
-                    Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
-                }
-            })
+            Log.d("CATLIST", catId.toString())
+            val action = CatListFragmentDirections.actionCatListFragmentToCatDetailFragment(catId)
+            findNavController(this).navigate(action)
         }
 
         return view
     }
-    private fun showCatDetails(cat: Cat?) {
-        if (cat != null) {
-            val catDetailFragment = CatDetailFragment.newInstance(cat)
-            val fragmentManager = requireActivity().supportFragmentManager
-            val transaction = fragmentManager.beginTransaction()
-            transaction.replace(R.id.container, catDetailFragment) // Replace fragmentContainer with your actual container ID
-            transaction.addToBackStack(null) // Add the fragment to the back stack (optional)
-            transaction.commit()
-        }
-    }
-
 }

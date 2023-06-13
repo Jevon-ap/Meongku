@@ -66,6 +66,11 @@ class CatDetailFragment : Fragment() {
         return view
     }
 
+    override fun onStop() {
+        super.onStop()
+        findNavController().navigateUp()
+    }
+
     private fun showCatDetails(cat: Cat) {
         Glide.with(requireContext())
             .load(cat.photo)

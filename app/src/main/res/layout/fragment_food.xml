@@ -25,6 +25,7 @@
             android:layout_marginTop="16dp"/>
 
         <EditText
+            android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/background_border"
@@ -36,22 +37,53 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Umur"
+            android:text="Tipe Makanan"
             android:layout_marginTop="16dp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupFoodType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
             <RadioButton
+                android:id="@+id/radioDry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dry"
+                android:layout_marginEnd="30dp"/>
+
+            <RadioButton
+                android:id="@+id/radioWet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wet"
+                android:layout_marginEnd="30dp"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umur"
+            android:layout_marginTop="16dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radioAboveOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="diatas 1"
                 android:layout_marginEnd="30dp"/>
 
             <RadioButton
+                android:id="@+id/radioBelowOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="dibawah 1"
@@ -61,43 +93,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berat badan"
-            android:layout_marginTop="16dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/background_border"
-            android:padding="5dp"
-            android:gravity="center_vertical"
-            android:inputType="numberDecimal"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Aktivitas"
             android:layout_marginTop="16dp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="8dp">
 
             <RadioButton
+                android:id="@+id/radioIndoor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Indoor"
                 android:layout_marginEnd="30dp"/>
 
             <RadioButton
+                android:id="@+id/radioOutdoor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Outdoor"
                 android:layout_marginEnd="30dp"/>
 
             <RadioButton
+                android:id="@+id/radioBoth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Both"/>
@@ -109,14 +130,18 @@
             android:text="Ras"
             android:layout_marginTop="16dp"/>
 
-        <EditText
+        <Spinner
+        android:id="@+id/spinnerRas"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"/>
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/background_border"
-            android:padding="5dp"
-            android:gravity="center_vertical"
-            android:inputType="textPersonName"
-            android:layout_marginTop="8dp"/>
+            android:layout_height="wrap_content"
+            android:text="Confirm Order" />
 
     </LinearLayout>
 </ScrollView>

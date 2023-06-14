@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
                         Log.d("LOGIN", "LOGIN: ${response.errorBody()?.string()}")
-                        Toast.makeText(this@LoginActivity, "", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Email atau Password ada yang salah", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {

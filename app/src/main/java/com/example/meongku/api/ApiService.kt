@@ -1,5 +1,7 @@
 package com.example.meongku.api
 
+import com.example.meongku.api.CatFoodRecommendation.CatFoodRecommendationRequest
+import com.example.meongku.api.CatFoodRecommendation.CatFoodRecommendationResponse
 import com.example.meongku.api.article.ArticleIdResponse
 import com.example.meongku.api.article.ArticleResponse
 import com.example.meongku.api.catlist.CatIdResponse
@@ -65,4 +67,7 @@ interface ApiService {
     @Multipart
     @POST("predict")
     fun uploadImage(@Part image: MultipartBody.Part): Call<PredictionResponse>
+
+    @POST("v1/cat-food-recommendations")
+    fun recommendFood(@Body body: CatFoodRecommendationRequest): Call<CatFoodRecommendationResponse>
 }

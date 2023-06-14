@@ -6,6 +6,7 @@ import com.example.meongku.api.catlist.CatIdResponse
 import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.api.login.LoginRequest
 import com.example.meongku.api.login.LoginResponse
+import com.example.meongku.api.ml.PredictionResponse
 import com.example.meongku.api.register.RegisterRequest
 import com.example.meongku.api.register.RegisterResponse
 import com.example.meongku.api.user.UpdateUserRequest
@@ -63,5 +64,5 @@ interface ApiService {
 
     @Multipart
     @POST("predict")
-    fun uploadImage(@Part image: MultipartBody.Part): Call<ResponseBody>
+    fun uploadImage(@Part image: MultipartBody.Part): Call<PredictionResponse>
 }

@@ -26,6 +26,9 @@ class ScanResultActivity : AppCompatActivity() {
         binding = ActivityScanResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val predictedClass = intent.getStringExtra("predicted_class")
+        binding.raceTextView.text = predictedClass
+
         try {
             val myFile = File(intent.getStringExtra("picture") ?: "")
             val isBackCamera = intent.getBooleanExtra("isBackCamera", true)

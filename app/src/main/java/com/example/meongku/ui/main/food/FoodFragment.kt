@@ -32,10 +32,10 @@ class FoodFragment : Fragment() {
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        foodViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textDashboard
+//        foodViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
@@ -43,17 +43,5 @@ class FoodFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-    override fun onResume() {
-        super.onResume()
-        showSystemUI()
-    }
 
-    private fun showSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().window.insetsController?.show(WindowInsets.Type.statusBars())
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.meongku.ui.main.home
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -24,10 +25,12 @@ import com.example.meongku.api.article.ArticleResponse
 import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.databinding.FragmentHomeBinding
 import com.example.meongku.preference.UserPreferences
+import com.example.meongku.ui.edituser.EditPasswordActivity
 import com.example.meongku.ui.main.cat.CatListAdapter
 import com.example.meongku.ui.main.article.ArticleAdapter
 import com.example.meongku.ui.main.article.ArticleFragmentDirections
 import com.example.meongku.ui.main.cat.CatListFragmentDirections
+import com.example.meongku.ui.main.scan.ScanActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -135,26 +138,23 @@ class HomeFragment : Fragment() {
             NavHostFragment.findNavController(this).navigate(action)
         }
 
+        binding.scan.setOnClickListener {
+            val intent = Intent(activity, ScanActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-        showSystemUI()
-    }
 
-    private fun showSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().window.insetsController?.show(WindowInsets.Type.statusBars())
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
-    }
+
+
 }
 

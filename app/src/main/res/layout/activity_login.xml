@@ -9,14 +9,24 @@
     android:paddingStart="16dp"
    >
 
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Masuk ke akun"
+        android:layout_marginTop="40dp"
         android:textSize="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
 
     <TextView
         android:paddingTop="100dp"
@@ -30,12 +40,16 @@
     <com.example.meongku.custom.MyEditTextEmail
         android:id="@+id/emailInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background_border"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
 
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/passwordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,13 +60,17 @@
     <com.example.meongku.custom.MyEditTextPassword
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background_border"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@+id/passwordLabel" />
 
     <Button
+        android:layout_marginTop="20dp"
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
         app:layout_constraintStart_toStartOf="parent"

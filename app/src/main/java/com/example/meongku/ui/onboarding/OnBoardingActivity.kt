@@ -46,5 +46,7 @@ class OnBoardingActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+        supportActionBar?.hide()
     }
+
 }

@@ -44,7 +44,7 @@ class EditUserActivity : AppCompatActivity() {
             val intent = Intent(this, EditPasswordActivity::class.java)
             startActivity(intent)
         }
-        binding.saveButton.setOnClickListener {
+        binding.buttonSave.setOnClickListener {
             val name = binding.nameEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
 

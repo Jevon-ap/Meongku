@@ -112,16 +112,6 @@ class UserFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
-        showSystemUI()
-    }
-
-    private fun showSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().window.insetsController?.show(WindowInsets.Type.statusBars())
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 
 }

@@ -21,6 +21,7 @@ import com.example.meongku.R
 import com.example.meongku.api.ApiService
 import com.example.meongku.api.CatBreedAPI
 import com.example.meongku.api.RetrofitClient
+import com.example.meongku.api.ml.PredictionResponse
 import com.example.meongku.databinding.ActivityScanBinding
 import com.example.meongku.preference.UserPreferences
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -47,7 +48,7 @@ class ScanActivity : AppCompatActivity() {
         binding = ActivityScanBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.captureGallery.setOnClickListener { startGallery() }
+       // binding.captureGallery.setOnClickListener { startGallery() }
         binding.captureImage.setOnClickListener {
             takePhoto()
         }
@@ -63,6 +64,7 @@ class ScanActivity : AppCompatActivity() {
         hideSystemUI()
         startCamera()
     }
+
     private fun takePhoto() {
         Log.d("ScanActivity", "Taking photo...")
         val imageCapture = imageCapture ?: return
@@ -80,21 +82,21 @@ class ScanActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     Log.d("ScanActivity", "Photo saved.")
                     val myFile = photoFile
                     uploadImage(myFile)
-                    startScanResultActivity(myFile.absolutePath, cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA)
-
                 }
             }
         )
     }
 
-    private fun startScanResultActivity(imagePath: String, isBackCamera: Boolean) {
+    private fun startScanResultActivity(imagePath: String, isBackCamera: Boolean, predictedClass: String) {
         val resultIntent = Intent(this@ScanActivity, ScanResultActivity::class.java).apply {
             putExtra("picture", imagePath)
             putExtra("isBackCamera", isBackCamera)
+            putExtra("predicted_class", predictedClass)
         }
         try {
             startActivity(resultIntent)
@@ -149,14 +151,14 @@ class ScanActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    private fun startGallery() {
-        Log.d("ScanActivity", "Starting gallery...")
-        val intent = Intent()
-        intent.action = Intent.ACTION_GET_CONTENT
-        intent.type = "image/*"
-        val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(chooser)
-    }
+//    private fun startGallery() {
+//        Log.d("ScanActivity", "Starting gallery...")
+//        val intent = Intent()
+//        intent.action = Intent.ACTION_GET_CONTENT
+//        intent.type = "image/*"
+//        val chooser = Intent.createChooser(intent, "Choose a Picture")
+//        launcherIntentGallery.launch(chooser)
+//    }
 
     private val launcherIntentGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -184,19 +186,23 @@ class ScanActivity : AppCompatActivity() {
         val body: MultipartBody.Part = MultipartBody.Part.createFormData("image_file", file.name, requestFile)
 
         // Memanggil fungsi uploadImage() pada API
-        val call: Call<ResponseBody> = api.uploadImage(body)
+        val call: Call<PredictionResponse> = api.uploadImage(body)
 
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+        call.enqueue(object : Callback<PredictionResponse> {
+            override fun onResponse(call: Call<PredictionResponse>, response: Response<PredictionResponse>) {
                 if (response.isSuccessful) {
+                    val prediction = response.body()?.predicted_class
                     Log.d("ScanActivity", "Image uploaded successfully!")
+
+                    // Mulai ScanResultActivity dengan hasil prediksi
+                    startScanResultActivity(file.absolutePath, cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA, prediction ?: "")
                 } else {
                     // Kode yang dijalankan ketika request gagal
                     Log.d("ScanActivity", "Image upload failed: ${response.errorBody()}")
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<PredictionResponse>, t: Throwable) {
                 // Kode yang dijalankan ketika terjadi kesalahan saat melakukan request
                 Log.d("ScanActivity", "Error: ${t.message}")
             }

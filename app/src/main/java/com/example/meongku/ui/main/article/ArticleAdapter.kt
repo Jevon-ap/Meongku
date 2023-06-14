@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.meongku.R
 import com.example.meongku.api.article.Article
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ArticleAdapter(private var articles: List<Article> = emptyList()) :
     RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
@@ -43,13 +46,13 @@ class ArticleAdapter(private var articles: List<Article> = emptyList()) :
         }
 
         fun bind(article: Article) {
-            categoryTextView.text = article.articleCategory?.joinToString(", ") ?: ""
-            titleTextView.text = article.articleTitle
-            dateTextView.text = formatDate(article.createdAt.seconds)
+            categoryTextView.text = article.article_category?.joinToString(", ") ?: ""
+            titleTextView.text = article.article_title
+            dateTextView.text = article.created_at?.let { formatDate(it.seconds) } ?: ""
 
             // Load article image using Glide or any other image loading library
             Glide.with(itemView.context)
-                .load(article.articleImage)
+                .load(article.article_image)
                 .into(imageView)
         }
 
@@ -67,13 +70,7 @@ class ArticleAdapter(private var articles: List<Article> = emptyList()) :
     }
 
     private fun formatDate(seconds: Long): String {
-        // Convert seconds to the desired date format
-        // You can use SimpleDateFormat or any other date formatting approach here
-        // Example:
-        // val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        // return dateFormat.format(Date(seconds * 1000))
-
-        // Placeholder implementation, return seconds as string
-        return seconds.toString()
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        return dateFormat.format(Date(seconds * 1000))
     }
 }

@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meongku.R
@@ -88,6 +90,7 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     val articleResponse = response.body()
                     val articles = articleResponse?.articles?.take(4) ?: emptyList()
+                    Log.d("ARTICLE LIST", "First article: $articleResponse")
                     articleAdapter.updateArticles(articles)
                     Log.d("ARTICLE LIST", "Articles fetched successfully: ${articles.size} articles")
                     val firstArticle = articles[0]
@@ -104,6 +107,18 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
             }
         })
+
+        val tvLinkRas: TextView = binding.tvLinkRas
+        tvLinkRas.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.navigation_cat)
+        }
+
+        val tvLinkArticle: TextView = binding.tvLinkArtikel
+        tvLinkArticle.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.articleFragment)
+        }
 
         return view
     }

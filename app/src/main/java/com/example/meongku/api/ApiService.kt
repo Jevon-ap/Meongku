@@ -44,7 +44,7 @@ interface ApiService {
     fun getAllArticles(): Call<ArticleResponse>
 
     @GET("v1/articles/{id}")
-    fun getArticleById(@Path("id") id: Int): Call<ArticleIdResponse>
+    fun getArticleById(@Path("id") id: String): Call<ArticleIdResponse>
 
     @POST("/v1/logout")
     fun logout(token: String): Call<ResponseBody>

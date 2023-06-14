@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,8 @@ import com.example.meongku.databinding.FragmentHomeBinding
 import com.example.meongku.preference.UserPreferences
 import com.example.meongku.ui.main.cat.CatListAdapter
 import com.example.meongku.ui.main.article.ArticleAdapter
+import com.example.meongku.ui.main.article.ArticleFragmentDirections
+import com.example.meongku.ui.main.cat.CatListFragmentDirections
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -118,6 +121,18 @@ class HomeFragment : Fragment() {
         tvLinkArticle.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.articleFragment)
+        }
+
+        catAdapter.setOnItemClickListener { catId ->
+            Log.d("CATLIST", catId.toString())
+            val action = HomeFragmentDirections.actionNavigationHomeToNavigationCatDetail(catId)
+            NavHostFragment.findNavController(this).navigate(action)
+        }
+
+        articleAdapter.setOnItemClickListener { articleId ->
+            Log.d("CATLIST", articleId)
+            val action = HomeFragmentDirections.actionNavigationHomeToArticleDetailFragment(articleId)
+            NavHostFragment.findNavController(this).navigate(action)
         }
 
         return view

@@ -17,6 +17,7 @@ import com.example.meongku.api.article.Article
 import com.example.meongku.api.article.ArticleIdResponse
 import com.example.meongku.api.article.CreatedAt
 import com.example.meongku.preference.UserPreferences
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,6 +80,11 @@ class ArticleDetailFragment : Fragment() {
         findNavController().navigateUp()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showBottomNavigationBar()
+    }
+
     private fun showArticleDetails(article: Article) {
         Glide.with(requireContext())
             .load(article.article_image)
@@ -88,6 +94,22 @@ class ArticleDetailFragment : Fragment() {
         tvKategoriArtikel.text = article.article_category.joinToString(", ")
         tvTanggalArtikel.text = formatDate(article.created_at)
         tvDeskripsiArtikel.text = article.article_body
+    }
+
+    private fun hideBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.GONE
+    }
+
+    private fun showBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.VISIBLE
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        hideBottomNavigationBar()
     }
 
     private fun formatDate(created_at: CreatedAt): String {

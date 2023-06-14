@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="TextView"
+        android:text="Lihat Selengkapnya ->"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvRasKucing" />
     <TextView
@@ -51,26 +51,33 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="45dp"
     android:layout_marginEnd="16dp"
-    android:text="TextView"
+    android:text="Lihat selengkapnya ->"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
     <TextView
         android:id="@+id/tvArtikel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:text="Artikel"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/rvArtikelKucing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rvRasKucing" />
+
     <TextView
         android:id="@+id/tvJudulRas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="45dp"
-
-        android:text="TextView"
+        android:text="Koleksi Ras"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
     <androidx.cardview.widget.CardView
@@ -92,8 +99,11 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Temukan jenis kucing kesayanganmu"
-                android:textSize="16sp"
+                android:text="Temukan jenis\n kucing kesayanganmu"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <Button

@@ -1,8 +1,12 @@
 package com.example.meongku.ui.main.home
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +16,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -125,6 +130,22 @@ class HomeFragment : Fragment() {
             val navController = findNavController()
             navController.navigate(R.id.articleFragment)
         }
+
+        val fullText = binding.textView.text
+        val spannableString = SpannableString(fullText)
+
+        val keyword = "kesayanganmu"
+        val startIndex = fullText.indexOf(keyword)
+        val endIndex = startIndex + keyword.length
+
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.red)),
+            startIndex,
+            endIndex,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        binding.textView.text = spannableString
 
         catAdapter.setOnItemClickListener { catId ->
             Log.d("CATLIST", catId.toString())

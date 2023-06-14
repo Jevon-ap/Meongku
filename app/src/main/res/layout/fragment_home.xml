@@ -20,7 +20,8 @@
         app:layout_constraintBottom_toTopOf="@+id/tvArtikel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvJudulRas" />
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulRas"
+        android:orientation="horizontal" />
 
     <TextView
         android:id="@+id/tvLinkArtikel"

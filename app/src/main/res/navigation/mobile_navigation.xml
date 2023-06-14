@@ -47,4 +47,9 @@
         android:name="com.example.meongku.ui.main.user.UserFragment"
         android:label="Tentang User"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.meongku.ui.main.article.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
 </navigation>

@@ -22,10 +22,10 @@ class RecommendationsActivity : AppCompatActivity() {
         val race = intent.getStringExtra("race")
         val productLink = intent.getStringExtra("productLink")
 
-        binding.nameTextView.text = name
-        binding.brandTextView.text = brand
-        binding.productNameTextView.text = productName
-        binding.raceTextView.text = race
+        binding.nameTextView.text = "Nama: "+ name
+        binding.brandTextView.text = "Merek: "+ brand
+        binding.productNameTextView.text = "Nama Produk: "+productName
+        binding.raceTextView.text = "Ras: "+race
         binding.linkButton.text = "Dapatkan Produk"
 
         binding.linkButton.setOnClickListener {

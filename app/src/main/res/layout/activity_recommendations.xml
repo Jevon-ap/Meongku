@@ -20,10 +20,10 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:layout_marginTop="16dp"
         tools:text="Name"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/brandTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -31,10 +31,11 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/brandTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="26sp"
         android:layout_marginTop="8dp"
         tools:text="Brand"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -42,10 +43,10 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/productNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_marginTop="8dp"
         tools:text="Product Name"
-        app:layout_constraintTop_toBottomOf="@+id/brandTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -53,7 +54,7 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/raceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:layout_marginTop="8dp"
         tools:text="Race"
         app:layout_constraintTop_toBottomOf="@+id/productNameTextView"
@@ -64,11 +65,11 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/linkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:textSize="16sp"
-        android:layout_marginTop="8dp"
-        tools:text="Dapatkan produk"
-        app:layout_constraintTop_toBottomOf="@+id/raceTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/raceTextView"
+        tools:text="Dapatkan produk" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

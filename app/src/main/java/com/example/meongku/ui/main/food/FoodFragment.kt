@@ -41,6 +41,7 @@ class FoodFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         val root: View = binding.root
         Log.d("FoodFragment", "Fragment view created")
@@ -51,6 +52,9 @@ class FoodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("FoodFragment", "View created")
+
+        binding.radioAboveOne.text="1 - 7 tahun"
+        binding.radioBelowOne.text="0 - 1 tahun"
         // list of cat breeds
         val rasList = arrayOf("Abyssinian", "Bengal", "Birman", "Bombay", "British Shorthair", "Egyptian Mau", "Maine Coon", "Persian"
             , "Ragdoll", "Russian Blue", "Siamese", "Sphynx")
@@ -84,8 +88,8 @@ class FoodFragment : Fragment() {
             }
 
             val ageInput = when {
-                binding.radioAboveOne.isChecked -> 1
-                binding.radioBelowOne.isChecked -> 2
+                binding.radioAboveOne.isChecked -> 2
+                binding.radioBelowOne.isChecked -> 1
                 else -> 1
             }
 
@@ -143,6 +147,11 @@ class FoodFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("FoodFragment", "Fragment resumed")
+    }
+
+    override fun onPause() {
+        super.onPause()
         Log.d("FoodFragment", "Fragment resumed")
     }
 

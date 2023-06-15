@@ -30,7 +30,6 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/darker_green"
-
             tools:text="Nama Ras"/>
 
         <TextView

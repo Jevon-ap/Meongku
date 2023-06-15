@@ -60,7 +60,7 @@ class RegisterActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
                         Log.d("REGISTER", "REGISTER: ${response.errorBody()?.string()}")
-                        Toast.makeText(this@RegisterActivity, "Error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RegisterActivity, "Kesalahan input data", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {

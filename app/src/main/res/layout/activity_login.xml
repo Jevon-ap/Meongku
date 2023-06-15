@@ -76,7 +76,7 @@
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Masuk"
         android:textStyle="bold"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"

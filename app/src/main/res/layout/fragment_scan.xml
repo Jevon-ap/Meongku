@@ -19,7 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/baseline_camera_alt_24" />
+            app:srcCompat="@drawable/group_87" />
 
         <ImageView
             android:id="@+id/SwitchCamera"
@@ -29,7 +29,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_cameraswitch_24" />
+            app:srcCompat="@drawable/ph_camera_rotate" />
 
         <ProgressBar
             android:id="@+id/loading"

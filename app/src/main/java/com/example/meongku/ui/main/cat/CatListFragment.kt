@@ -2,24 +2,22 @@ package com.example.meongku.ui.main.cat
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meongku.R
 import com.example.meongku.api.RetrofitClient
-import com.example.meongku.api.catlist.Cat
-import com.example.meongku.api.catlist.CatIdResponse
 import com.example.meongku.api.catlist.CatResponse
 import com.example.meongku.preference.UserPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class CatListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -60,7 +58,9 @@ class CatListFragment : Fragment() {
 
         // Create an instance of the CatListAdapter and set it to the RecyclerView
         catAdapter = CatListAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.layoutManager = layoutManager
         recyclerView.adapter = catAdapter
 
         // Set the click listener on the CatListAdapter

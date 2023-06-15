@@ -60,13 +60,13 @@ tools:context=".ui.main.food.RecommendationsActivity">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/linkTextView"
+    <Button
+        android:id="@+id/linkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="8dp"
-        tools:text="Link"
+        tools:text="Dapatkan produk"
         app:layout_constraintTop_toBottomOf="@+id/raceTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

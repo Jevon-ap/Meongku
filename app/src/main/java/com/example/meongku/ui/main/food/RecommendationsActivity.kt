@@ -26,13 +26,12 @@ class RecommendationsActivity : AppCompatActivity() {
         binding.brandTextView.text = brand
         binding.productNameTextView.text = productName
         binding.raceTextView.text = race
-        binding.linkTextView.text = productLink
+        binding.linkButton.text = "Dapatkan Produk"
 
-        binding.linkTextView.setOnClickListener {
-            val url = binding.linkTextView.text.toString()
-            if (URLUtil.isValidUrl(url)) {
+        binding.linkButton.setOnClickListener {
+            if (URLUtil.isValidUrl(productLink)) {
                 val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(url)
+                i.data = Uri.parse(productLink)
                 startActivity(i)
             } else {
                 Toast.makeText(this, "Invalid URL", Toast.LENGTH_SHORT).show()

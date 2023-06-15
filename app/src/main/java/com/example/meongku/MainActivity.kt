@@ -16,6 +16,7 @@ import com.example.meongku.databinding.ActivityMainBinding
 import com.example.meongku.preference.UserPreferences
 import com.example.meongku.ui.login.LoginActivity
 import android.Manifest
+import androidx.appcompat.app.AlertDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -85,6 +86,18 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
     }
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Confirmation")
+            .setMessage("Are you sure you want to exit the app and logout?")
+            .setPositiveButton("Yes") { _, _ ->
+                userPreferences.clear()
+                finishAffinity()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
 
 
 }

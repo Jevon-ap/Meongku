@@ -16,6 +16,7 @@ import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.article.Article
 import com.example.meongku.api.article.ArticleResponse
 import com.example.meongku.preference.UserPreferences
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,5 +64,26 @@ class ArticleFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showBottomNavigationBar()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        hideBottomNavigationBar()
+    }
+
+    private fun hideBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.GONE
+    }
+
+    private fun showBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.VISIBLE
     }
 }

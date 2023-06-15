@@ -12,8 +12,11 @@
         <ImageView
             android:id="@+id/ivFotoKucing"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="380dp"
+            android:layout_marginTop="0dp"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
             android:contentDescription="Gambar Kucing"
             tools:text="@tools:sample/avatars" />
 
@@ -22,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
             android:textAlignment="viewStart"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -41,6 +45,6 @@
             android:textAlignment="viewStart"
             android:lineSpacingExtra="8dp"
             android:textSize="16sp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="22dp"/>
     </LinearLayout>
 </ScrollView>

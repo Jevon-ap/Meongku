@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp"
-    >
+    android:paddingHorizontal="25dp">
 
     <ImageView
         android:layout_marginTop="20dp"

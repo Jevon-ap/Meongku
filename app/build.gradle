@@ -19,6 +19,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Meongku-v1.apk"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

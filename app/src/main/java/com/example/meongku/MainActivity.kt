@@ -144,10 +144,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-
 
         navView.setupWithNavController(navController)
 

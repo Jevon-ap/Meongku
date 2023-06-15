@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/button_edit_profile"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Edit Profile"
@@ -62,11 +62,14 @@
         app:layout_constraintTop_toBottomOf="@id/separator"
         android:background="?android:attr/selectableItemBackground"
         android:drawableLeft="@drawable/person"
+        android:gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         />
 
     <Button
         android:id="@+id/button_theme"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Theme"
@@ -75,11 +78,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_edit_profile"
         android:background="?android:attr/selectableItemBackground"
-        android:drawableLeft="@drawable/setting"/>
+        android:drawableLeft="@drawable/setting"
+        android:gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        />
 
     <Button
         android:id="@+id/button_rate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Rate"
@@ -88,11 +95,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_theme"
         android:background="?android:attr/selectableItemBackground"
-        android:drawableLeft="@drawable/rate"/>
+        android:drawableLeft="@drawable/rate"
+        android:gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        />
 
     <Button
         android:id="@+id/button_sign_out"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Sign Out"
@@ -101,6 +112,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_rate"
         android:background="?android:attr/selectableItemBackground"
-        android:drawableLeft="@drawable/exit"/>
+        android:drawableLeft="@drawable/exit"
+        android:gravity="center_vertical"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

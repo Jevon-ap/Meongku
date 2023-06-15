@@ -85,8 +85,8 @@ class FoodFragment : Fragment() {
 
             val ageInput = when {
                 binding.radioAboveOne.isChecked -> 1
-                binding.radioBelowOne.isChecked -> 0
-                else -> 0
+                binding.radioBelowOne.isChecked -> 2
+                else -> 1
             }
 
             val activityInput = when {

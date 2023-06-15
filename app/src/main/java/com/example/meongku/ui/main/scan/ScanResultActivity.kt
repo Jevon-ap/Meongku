@@ -38,7 +38,8 @@ class ScanResultActivity : AppCompatActivity() {
             Log.e("ScanResultActivity", "Error in onCreate: ${e.localizedMessage}")
         }
 
-        launcherIntentCameraX.launch(Intent(this, ScanActivity::class.java))
+
+        //launcherIntentCameraX.launch(Intent(this, ScanActivity::class.java))
     }
 
     private val launcherIntentCameraX = registerForActivityResult(

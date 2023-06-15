@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<ArticleResponse>, response: Response<ArticleResponse>) {
                 if (response.isSuccessful) {
                     val articleResponse = response.body()
-                    val articles = articleResponse?.articles?.take(4) ?: emptyList()
+                    val articles = articleResponse?.articles?.take(3) ?: emptyList()
                     Log.d("ARTICLE LIST", "First article: $articleResponse")
                     articleAdapter.updateArticles(articles)
                     Log.d("ARTICLE LIST", "Articles fetched successfully: ${articles.size} articles")

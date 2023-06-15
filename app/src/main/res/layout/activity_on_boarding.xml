@@ -9,9 +9,9 @@
     <ImageView
         android:id="@+id/onboardingImage"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/meongku"
+        android:src="@drawable/onboarding_cat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,10 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textAlignment="center"
-        android:text="Kenali dan rawat kucing kesayanganmu"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Kenali dan rawat \nkucing kesayanganmu"
+        android:textStyle="bold"
+        android:layout_marginStart="30dp"
+        android:textAlignment="viewStart"
+        android:textSize="32sp"
+        android:lineSpacingExtra="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingImage" />
 
@@ -32,11 +34,13 @@
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="30dp"
         android:text="Masuk"
-        app:layout_constraintEnd_toStartOf="@id/registerButton"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/onboardingText" />
 
@@ -44,11 +48,14 @@
         android:id="@+id/registerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="30dp"
         android:text="Daftar"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/loginButton"
-        app:layout_constraintTop_toTopOf="@id/loginButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

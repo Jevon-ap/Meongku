@@ -12,6 +12,7 @@
     <color name="dark_orange">#FF8C00</color>
     <color name="gray">#686868</color>
     <color name="light_green">#71EFA3</color>
+    <color name="darker_green">#00BF4B</color>
     <color name="red">#FF616D</color>
     <color name="icon_selected">#00CD52</color>
     <color name="icon_unselected">#424242</color>

@@ -3,7 +3,11 @@ package com.example.meongku.ui.onboarding
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.meongku.R
 import com.example.meongku.databinding.ActivityOnBoardingBinding
@@ -46,6 +50,23 @@ class OnBoardingActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+        val fullText = binding.onboardingText.text
+        val spannableString = SpannableString(fullText)
+
+        val keyword = "kesayanganmu"
+        val startIndex = fullText.indexOf(keyword)
+        val endIndex = startIndex + keyword.length
+
+        spannableString.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, R.color.red)),
+            startIndex,
+            endIndex,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        binding.onboardingText.text = spannableString
+
         supportActionBar?.hide()
     }
 

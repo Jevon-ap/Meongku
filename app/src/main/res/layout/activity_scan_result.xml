@@ -33,16 +33,18 @@
                 android:id="@+id/resultTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hurray, we identified the Cat!"
+                android:text="Kucing telah teridentifikasi"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:gravity="center" />
 
             <TextView
+                android:layout_marginTop="30dp"
                 android:id="@+id/raceTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Race"
-                android:textSize="18sp" />
+                android:textSize="21sp"
+                android:gravity="center_horizontal" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -37,6 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_login" />
 
     <com.example.meongku.custom.MyEditTextEmail
+        android:textColor="@color/black"
         android:id="@+id/emailInput"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -59,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <com.example.meongku.custom.MyEditTextPassword
+        android:textColor="@color/black"
         android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="40dp"

@@ -68,7 +68,20 @@ class ScanFragment : Fragment() {
         startCamera()
     }
 
+    private fun showLoading() {
+        binding.loading.visibility = View.VISIBLE
+        binding.captureImage.isEnabled = false
+        binding.SwitchCamera.isEnabled = false
+    }
+
+    private fun hideLoading() {
+        binding.loading.visibility = View.GONE
+        binding.captureImage.isEnabled = true
+        binding.SwitchCamera.isEnabled = true
+    }
+
     private fun takePhoto() {
+        showLoading()
         val imageCapture = imageCapture ?: return
         val photoFile = createFile(requireActivity().application)
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
@@ -149,7 +162,7 @@ class ScanFragment : Fragment() {
                 if (response.isSuccessful) {
                     val prediction = response.body()?.predicted_class
                     Log.d("ScanActivity", "Image uploaded successfully!")
-
+                    hideLoading()
                     startScanResultActivity(file.absolutePath, cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA, prediction ?: "")
                 } else {
 

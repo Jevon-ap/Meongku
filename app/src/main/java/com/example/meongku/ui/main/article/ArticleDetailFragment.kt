@@ -75,10 +75,6 @@ class ArticleDetailFragment : Fragment() {
         return view
     }
 
-    override fun onStop() {
-        super.onStop()
-        findNavController().navigateUp()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

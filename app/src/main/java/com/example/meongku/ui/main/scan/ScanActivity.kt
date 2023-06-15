@@ -7,6 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -65,7 +66,20 @@ class ScanActivity : AppCompatActivity() {
         startCamera()
     }
 
+    private fun showLoading() {
+        binding.loading.visibility = View.VISIBLE
+        binding.captureImage.isEnabled = false
+        binding.SwitchCamera.isEnabled = false
+    }
+
+    private fun hideLoading() {
+        binding.loading.visibility = View.GONE
+        binding.captureImage.isEnabled = true
+        binding.SwitchCamera.isEnabled = true
+    }
+
     private fun takePhoto() {
+        showLoading()
         Log.d("ScanActivity", "Taking photo...")
         val imageCapture = imageCapture ?: return
         val photoFile = createFile(application)
@@ -99,6 +113,7 @@ class ScanActivity : AppCompatActivity() {
             putExtra("predicted_class", predictedClass)
         }
         try {
+            hideLoading()
             Log.d("ScanActivity", "Starting ScanResultActivity with image path: $imagePath and predicted class: $predictedClass")
             startActivity(resultIntent)
         } catch (e: Exception) {

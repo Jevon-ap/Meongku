@@ -65,6 +65,7 @@ class CatDetailFragment : Fragment() {
             })
         }
 
+
         return view
     }
 
@@ -87,6 +88,13 @@ class CatDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         hideBottomNavigationBar()
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.navigation_cat)
+            }
+        })
+
     }
 
 

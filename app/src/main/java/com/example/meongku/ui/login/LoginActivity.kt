@@ -14,6 +14,7 @@ import com.example.meongku.api.login.LoginRequest
 import com.example.meongku.api.login.LoginResponse
 import com.example.meongku.databinding.ActivityLoginBinding
 import com.example.meongku.preference.UserPreferences
+import com.example.meongku.ui.onboarding.OnBoardingActivity
 import com.example.meongku.ui.theme.SettingPreferences
 import com.example.meongku.ui.theme.ThemeViewModel
 import com.example.meongku.ui.theme.ThemeViewModelFactory
@@ -80,5 +81,9 @@ class LoginActivity : AppCompatActivity() {
             })
         }
         supportActionBar?.hide()
+        binding.backButton.setOnClickListener {
+            val intent = Intent(this@LoginActivity, OnBoardingActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

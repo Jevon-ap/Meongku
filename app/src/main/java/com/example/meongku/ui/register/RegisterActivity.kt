@@ -21,6 +21,7 @@ import com.example.meongku.databinding.ActivityLoginBinding
 import com.example.meongku.databinding.ActivityRegisterBinding
 import com.example.meongku.preference.UserPreferences
 import com.example.meongku.ui.login.LoginActivity
+import com.example.meongku.ui.onboarding.OnBoardingActivity
 import com.example.meongku.ui.theme.SettingPreferences
 import com.example.meongku.ui.theme.ThemeViewModel
 import com.example.meongku.ui.theme.ThemeViewModelFactory
@@ -40,6 +41,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(view)
 
         retrofitClient = RetrofitClient(UserPreferences(this))
+
 
         binding.registerButton.setOnClickListener {
             val email = binding.emailInput.text.toString()
@@ -72,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.backButton.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+            val intent = Intent(this@RegisterActivity, OnBoardingActivity::class.java)
             startActivity(intent)
         }
     }

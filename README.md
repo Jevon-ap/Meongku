@@ -16,9 +16,6 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 ### Perangkat dan Sistem Operasi
 - Perangkat Android dengan versi minimal Android 7.0 (Nougat / API level 24). 
 
-### Pengembangan
-
-
 ### Menginstal
 
 ## Instalasi
@@ -62,19 +59,6 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 - Aplikasi ini ditargetkan untuk Android API level 33.
 - Aplikasi di desain menggunakn FIGMA  [KLIK DISINI](https://www.figma.com/file/afKTL6nhRm9K1EvqpZJOrw/Untitled?type=design&node-id=25-214&t=Eu2plum8eh7KxVgD-0)
 
+## Library
 
-## Tim Pengembang
 
-Berikan informasi tentang anggota tim Anda. Anda bisa mencantumkan nama, peran, dan tautan ke profil GitHub atau LinkedIn mereka.
-
-- Nama 1 - Peran - [GitHub](link) / [LinkedIn](link)
-- Nama 2 - Peran - [GitHub](link) / [LinkedIn](link)
-- Nama 3 - Peran - [GitHub](link) / [LinkedIn](link)
-
-## Lisensi
-
-Jika aplikasi Anda berlisensi, sertakan informasi lisensi di sini.
-
-## Kontak
-
-Berikan informasi kontak untuk pertanyaan atau umpan balik.

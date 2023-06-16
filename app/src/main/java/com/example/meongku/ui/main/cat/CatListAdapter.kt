@@ -1,6 +1,5 @@
 package com.example.meongku.ui.main.cat
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,11 @@ import com.example.meongku.api.catlist.Cat
 
 class CatListAdapter(private var cats: List<Cat> = emptyList()) :
     RecyclerView.Adapter<CatListAdapter.CatViewHolder>() {
+
     private var onItemClick: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_cat_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cat_list, parent, false)
         return CatViewHolder(view)
     }
 

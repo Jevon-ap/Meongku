@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +14,7 @@ import com.example.meongku.R
 import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.article.Article
 import com.example.meongku.api.article.ArticleResponse
+import com.example.meongku.databinding.FragmentArticleBinding
 import com.example.meongku.preference.UserPreferences
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
@@ -22,16 +22,27 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ArticleFragment : Fragment() {
-    private lateinit var recyclerView: RecyclerView
+    private var _binding: FragmentArticleBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var articleAdapter: ArticleAdapter
     private lateinit var retrofitClient: RetrofitClient
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_article, container, false)
-        recyclerView = view.findViewById(R.id.articleRecyclerView)
+    ): View {
+        _binding = FragmentArticleBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        hideBottomNavigationBar()
+
+        recyclerView = binding.articleRecyclerView
 
         retrofitClient = RetrofitClient(UserPreferences(requireContext()))
 
@@ -58,23 +69,15 @@ class ArticleFragment : Fragment() {
         recyclerView.adapter = articleAdapter
 
         articleAdapter.setOnItemClickListener { articleId ->
-            Log.d("ARTICLE LIST", articleId.toString())
             val action = ArticleFragmentDirections.actionArticleFragmentToArticleDetailFragment(articleId)
             findNavController().navigate(action)
         }
-
-        return view
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
         showBottomNavigationBar()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        hideBottomNavigationBar()
     }
 
     private fun hideBottomNavigationBar() {

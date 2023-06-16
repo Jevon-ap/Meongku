@@ -11,11 +11,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -29,7 +26,6 @@ import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.article.Article
 import com.example.meongku.api.article.ArticleResponse
 import com.example.meongku.api.catlist.CatResponse
-import com.example.meongku.databinding.ActivityMainBinding
 import com.example.meongku.databinding.FragmentHomeBinding
 import com.example.meongku.preference.UserPreferences
 import com.example.meongku.ui.edituser.EditPasswordActivity
@@ -51,8 +47,6 @@ class HomeFragment : Fragment() {
     private lateinit var articleAdapter: ArticleAdapter
     private lateinit var retrofitClient: RetrofitClient
 
-
-    // This property is only valid between onCreateView and onDestroyView.
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -72,8 +66,7 @@ class HomeFragment : Fragment() {
 
         retrofitClient = RetrofitClient(UserPreferences(requireContext()))
 
-
-        catAdapter = CatListAdapter() // Instantiate the CatListAdapter
+        catAdapter = CatListAdapter()
         articleAdapter = ArticleAdapter()
 
         recyclerView1.adapter = catAdapter
@@ -81,22 +74,19 @@ class HomeFragment : Fragment() {
 
         retrofitClient.apiInstance().getAllCats()
             .enqueue(object : Callback<CatResponse> {
-                override fun onResponse(
-                    call: Call<CatResponse>,
-                    response: Response<CatResponse>
-                ) {
+                override fun onResponse(call: Call<CatResponse>, response: Response<CatResponse>) {
                     if (response.isSuccessful) {
                         val catResponse = response.body()
                         val cats = catResponse?.cats?.take(4) ?: emptyList()
                         catAdapter.updateCats(cats)
                     } else {
-                        Log.d("CAT LIST", "GAGAL: ${response.errorBody()?.string()}")
+                        Log.d("Home Fragment", "GAGAL: ${response.errorBody()?.string()}")
                         Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<CatResponse>, t: Throwable) {
-                    Log.d("CATLIST", "${t.message}")
+                    Log.d("Home Fragment:", "${t.message}")
                     Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
                 }
             })
@@ -106,20 +96,16 @@ class HomeFragment : Fragment() {
                 if (response.isSuccessful) {
                     val articleResponse = response.body()
                     val articles = articleResponse?.articles?.take(3) ?: emptyList()
-                    Log.d("ARTICLE LIST", "First article: $articleResponse")
                     articleAdapter.updateArticles(articles)
-                    Log.d("ARTICLE LIST", "Articles fetched successfully: ${articles.size} articles")
                     val firstArticle = articles[0]
-                    Log.d("ARTICLE LIST", "First article: $firstArticle")
-
                 } else {
-                    Log.d("ARTICLE LIST", "FAILED: ${response.errorBody()?.string()}")
+                    Log.d("Home Fragment", "FAILED: ${response.errorBody()?.string()}")
                     Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ArticleResponse>, t: Throwable) {
-                Log.d("ARTICLE LIST", "${t.message}")
+                Log.d("Home Fragment", "${t.message}")
                 Toast.makeText(requireContext(), t.message, Toast.LENGTH_SHORT).show()
             }
         })
@@ -153,13 +139,11 @@ class HomeFragment : Fragment() {
         binding.textView.text = spannableString
 
         catAdapter.setOnItemClickListener { catId ->
-            Log.d("CATLIST", catId.toString())
             val action = HomeFragmentDirections.actionNavigationHomeToNavigationCatDetail(catId)
             NavHostFragment.findNavController(this).navigate(action)
         }
 
         articleAdapter.setOnItemClickListener { articleId ->
-            Log.d("CATLIST", articleId)
             val action = HomeFragmentDirections.actionNavigationHomeToArticleDetailFragment(articleId)
             NavHostFragment.findNavController(this).navigate(action)
         }
@@ -174,22 +158,18 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.d("HomeFragment", "Fragment Destroyed")
         _binding = null
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("HomeFragment", "Fragment started")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("HomeFragment", "Fragment resumed")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("HomeFragment", "Fragment paused")
     }
 }

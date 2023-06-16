@@ -42,19 +42,16 @@ class CatDetailFragment : Fragment() {
 
         val catId = arguments?.getInt("catId")
 
-        Log.d("CATDETAILS", catId.toString())
-
-        if (catId != null) {
-            Log.d("CATDETAILS", "BERHASIL")
-
-            retrofitClient.apiInstance().getCatById(catId).enqueue(object : Callback<CatIdResponse> {
+        catId?.let {
+            retrofitClient.apiInstance().getCatById(it).enqueue(object : Callback<CatIdResponse> {
                 override fun onResponse(call: Call<CatIdResponse>, response: Response<CatIdResponse>) {
                     if (response.isSuccessful) {
                         val catResponse = response.body()
                         val cat = catResponse?.cat
                         cat?.let { showCatDetails(it) }
                     } else {
-                        // Handle error case
+                        Log.d("Home Fragment", "GAGAL: ${response.errorBody()?.string()}")
+                        Toast.makeText(requireContext(), "ERROR", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -65,23 +62,7 @@ class CatDetailFragment : Fragment() {
             })
         }
 
-
         return view
-    }
-
-    private fun showBottomNavigationBar() {
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNavigationView?.visibility = View.VISIBLE
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        showBottomNavigationBar()
-    }
-
-    private fun hideBottomNavigationBar() {
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNavigationView?.visibility = View.GONE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,9 +75,22 @@ class CatDetailFragment : Fragment() {
                 findNavController().navigate(R.id.navigation_cat)
             }
         })
-
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showBottomNavigationBar()
+    }
+
+    private fun showBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.GONE
+    }
 
     private fun showCatDetails(cat: Cat) {
         Glide.with(requireContext())
@@ -105,12 +99,5 @@ class CatDetailFragment : Fragment() {
 
         tvRasKucing.text = cat.race
         tvDeskripsiKucing.text = cat.desc
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        // Navigate up to the access point of cat race list fragment
-        findNavController().popBackStack(R.id.navigation_cat, false)
     }
 }

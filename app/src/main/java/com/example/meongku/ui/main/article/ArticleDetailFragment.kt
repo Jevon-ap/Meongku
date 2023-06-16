@@ -100,11 +100,6 @@ class ArticleDetailFragment : Fragment() {
         bottomNavigationView?.visibility = View.GONE
     }
 
-    private fun showBottomNavigationBar() {
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNavigationView?.visibility = View.VISIBLE
-    }
-
     private fun formatDate(created_at: CreatedAt): String {
         val timestamp = created_at.seconds * 1000L + created_at.nanoseconds / 1000000L
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())

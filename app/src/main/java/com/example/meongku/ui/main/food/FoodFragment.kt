@@ -71,7 +71,6 @@ class FoodFragment : Fragment() {
         userPreferences = UserPreferences(requireContext())
         binding.spinnerRas.adapter = adapter
 
-        // set item selected listener
         binding.spinnerRas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
@@ -151,26 +150,19 @@ class FoodFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Log.d("FoodFragment", "Fragment destroyed")
         _binding = null
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("FoodFragment", "Fragment started")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("FoodFragment", "Fragment resumed")
     }
 
     override fun onPause() {
         super.onPause()
         clearInput()
-        Log.d("FoodFragment", "Fragment paused")
     }
-
-
-
 }

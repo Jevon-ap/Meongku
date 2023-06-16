@@ -118,8 +118,8 @@ class HomeFragment : Fragment() {
 
         val tvLinkArticle: TextView = binding.tvLinkArtikel
         tvLinkArticle.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.articleFragment)
+            val action = HomeFragmentDirections.actionNavigationHomeToArticleFragment()
+            findNavController().navigate(action)
         }
 
         val fullText = binding.textView.text
@@ -154,6 +154,16 @@ class HomeFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showBottomNavigationBar()
+    }
+
+    private fun showBottomNavigationBar() {
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.nav_view)
+        bottomNavigationView?.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {

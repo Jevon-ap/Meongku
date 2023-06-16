@@ -14,5 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/euclid_circular_a_regular</item>
         <item name="android:textColor">@color/black</item>
+        <!-- Warna Bottom Nav Bar -->
+        <item name="iconSelected">@color/icon_selected_green</item>
+        <item name="iconUnselected">@color/icon_unselected_gray</item>
     </style>
 </resources>

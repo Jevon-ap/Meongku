@@ -2,7 +2,7 @@
 
 ## Deskripsi
 
-Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik hewan peliharaan memahami kucing mereka dengan lebih baik. Aplikasi ini menggunakan [Meongku Web Service API](LINK_TO_API_DOCUMENTATION) yang dapat mengidentifikasi jenis ras kucing dengan akurat, memberikan informasi spesifik tentang ras, dan merekomendasikan produk makanan.
+Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik hewan peliharaan memahami kucing mereka dengan lebih baik. Aplikasi ini menggunakan [Meongku Web Service API]([LINK_TO_API_DOCUMENTATION](https://github.com/arisafriyanto/meongku-api)) yang dapat mengidentifikasi jenis ras kucing dengan akurat, memberikan informasi spesifik tentang ras, dan merekomendasikan produk makanan.
 
 ## Fitur Utama
 

@@ -1,26 +1,24 @@
 # Meongku Android App
 
-## Deskripsi
+## Description
 
-Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik hewan peliharaan memahami kucing mereka dengan lebih baik. Aplikasi ini menggunakan [Meongku Web Service API](https://github.com/arisafriyanto/meongku-capstone-project/tree/main/Cloud_computing) dan teknologi [Machine Learning](https://github.com/arisafriyanto/meongku-capstone-project/tree/main/Machine_learning) untuk mengidentifikasi jenis ras kucing dengan akurat, memberikan informasi spesifik tentang ras, dan merekomendasikan produk makanan.
+Meongku Android App is a mobile application designed to help pet owners better understand their cats. The app utilizes [Meongku Web Service API](https://github.com/arisafriyanto/meongku-capstone-project/tree/main/Cloud_computing) and [Machine Learning](https://github.com/arisafriyanto/meongku-capstone-project/tree/main/Machine_learning) to accurately identify cat breeds, provide specific information about the breeds, and recommend food products.
 
 
-## Fitur Utama
+## Key Features
 
-1. **Identifikasi Ras Kucing**: Unggah foto kucing Anda, dan aplikasi akan mengidentifikasi rasnya dengan akurat.
-2. **Informasi Ras Kucing**: Dapatkan informasi mendetail tentang ras kucing Anda termasuk karakteristik fisik, perilaku, dan kebutuhan kesehatan.
-3. **Rekomendasi Produk Makanan**: Berdasarkan ras kucing Anda, aplikasi ini dapat merekomendasikan produk makanan yang cocok untuk kebutuhan nutrisi kucing Anda.
+1. **Cat Breed Identification**: Upload a photo of your cat, and the app will accurately identify its breed.
+2. **Cat Breed Information**: Get detailed information about your cat's breed, including physical characteristics, behavior, and health needs.
+3. **Food Product Recommendations**: Based on your cat's breed, the app can recommend food products suitable for its nutritional needs.
 
-## Prasyarat
+## Prerequisites
 
 ### Perangkat dan Sistem Operasi
 - Perangkat Android dengan versi minimal Android 7.0 (Nougat / API level 24). 
 
-### Menginstal
+## Installation
 
-## Instalasi
-
-### Melalui GitHub
+### Via GitHub
 
 1. Buka repositori GitHub aplikasi 'Meongku' di browser web Anda: [LINK](https://github.com/Jevon-ap/Meongku)
 2. Klik `Code` di pojok kanan atas halaman, lalu klik `Download ZIP`.
@@ -55,10 +53,15 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 
 ## Pengembangan
 
-- Aplikasi ini dikembangkan menggunakan Kotlin dan Java 8.
-- Aplikasi ini ditargetkan untuk Android API level 33.
-- Aplikasi di desain menggunakn FIGMA  [KLIK DISINI](https://www.figma.com/file/afKTL6nhRm9K1EvqpZJOrw/Untitled?type=design&node-id=25-214&t=Eu2plum8eh7KxVgD-0)
+- This application is developed using Kotlin and Java 8.
+- The application targets Android API level 33.
+- The application design is done using FIGMA  [KLIK DISINI](https://www.figma.com/file/afKTL6nhRm9K1EvqpZJOrw/Untitled?type=design&node-id=25-214&t=Eu2plum8eh7KxVgD-0)
 
 ## Library
+- Retrofit 
+- Camera X
+- Glide
+- Navigation
+- datasore-preference
 
 

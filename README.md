@@ -36,7 +36,7 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 
 ### Penggunaan
 
-Berikan petunjuk dasar tentang cara menggunakan aplikasi Anda. Anda bisa menyertakan beberapa screenshot atau gif untuk membantu memvisualisasikan.
+![](https://cdn.discordapp.com/attachments/1107641056926892122/1119151988861571112/Screenshot_2023-06-16-13-29-39-890_com.example.meongku.jpg)
 
 ## Pengembangan
 

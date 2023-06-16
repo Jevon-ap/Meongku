@@ -14,7 +14,7 @@ Meongku Android App is a mobile application designed to help pet owners better u
 ## Prerequisites
 
 ### Perangkat dan Sistem Operasi
-- Perangkat Android dengan versi minimal Android 7.0 (Nougat / API level 24). 
+- Android device with a minimum version of Android 7.0 (Nougat / API level 24). 
 
 ## Installation
 

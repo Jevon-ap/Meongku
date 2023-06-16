@@ -36,7 +36,25 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 
 ### Penggunaan
 
-<img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151988861571112/Screenshot_2023-06-16-13-29-39-890_com.example.meongku.jpg" width="200"/>
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151988861571112/Screenshot_2023-06-16-13-29-39-890_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151989134217287/Screenshot_2023-06-16-13-29-45-246_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151989394259968/Screenshot_2023-06-16-13-29-50-919_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151139028467812/Screenshot_2023-06-16-13-17-18-110_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151139573739551/Screenshot_2023-06-16-13-17-37-515_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151139896692766/Screenshot_2023-06-16-13-17-41-459_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151140240621588/Screenshot_2023-06-16-13-17-51-587_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151140471312474/Screenshot_2023-06-16-13-18-38-089_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151140798464020/Screenshot_2023-06-16-13-19-51-640_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151141083680899/Screenshot_2023-06-16-13-19-58-111_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151141347917895/Screenshot_2023-06-16-13-20-12-438_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151141641523290/Screenshot_2023-06-16-13-20-23-448_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151141985464350/Screenshot_2023-06-16-13-20-39-888_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151169378459698/Screenshot_2023-06-16-13-20-44-402_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119152099146604584/image.png" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151169697235024/Screenshot_2023-06-16-13-22-53-167_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+  <img src="https://cdn.discordapp.com/attachments/1107641056926892122/1119151169990840330/Screenshot_2023-06-16-13-23-18-037_com.example.meongku.jpg" width="200" style="margin-right: 20px;"/>
+</div>
 
 ## Pengembangan
 

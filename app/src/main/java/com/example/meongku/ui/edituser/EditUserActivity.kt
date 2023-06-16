@@ -30,6 +30,7 @@ class EditUserActivity : AppCompatActivity() {
         binding = ActivityEditUserBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        supportActionBar?.hide()
         userPreferences = UserPreferences(this)
         retrofitClient = RetrofitClient(userPreferences)
         val userData = userPreferences.userData

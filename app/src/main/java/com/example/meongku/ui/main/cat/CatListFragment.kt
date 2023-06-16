@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.meongku.R
 import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.catlist.CatResponse
+import com.example.meongku.databinding.FragmentCatListBinding
 import com.example.meongku.preference.UserPreferences
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class CatListFragment : Fragment() {
+    private var _binding: FragmentCatListBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var catAdapter: CatListAdapter
     private lateinit var retrofitClient: RetrofitClient
@@ -28,15 +31,16 @@ class CatListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_cat_list, container, false)
-        recyclerView = view.findViewById(R.id.catRecyclerView)
+        _binding = FragmentCatListBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        recyclerView = binding.catRecyclerView
 
         retrofitClient = RetrofitClient(UserPreferences(requireContext()))
 
         Log.d("SINI BANGGG", "BERHASIL SAMPAI SINI") // Log a debug message
 
         // Fetch the cat data using Retrofit
-
         retrofitClient.apiInstance().getAllCats().enqueue(object : Callback<CatResponse> {
             override fun onResponse(call: Call<CatResponse>, response: Response<CatResponse>) {
                 if (response.isSuccessful) {
@@ -71,5 +75,26 @@ class CatListFragment : Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("CatListFragment", "Fragment Destroyed")
+        _binding = null
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("CatListFragment", "Fragment started")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("CatListFragment", "Fragment resumed")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("CatListFragment", "Fragment paused")
     }
 }

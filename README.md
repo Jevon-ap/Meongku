@@ -2,13 +2,13 @@
 
 ## Deskripsi
 
-Meongku Web Service API is a web service that can accurately identify cat breeds, provide breed-specific information, and recommend food products. This service is designed to help pet owners understand their cats better and provide care that suits their pets' needs.
+Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik hewan peliharaan memahami kucing mereka dengan lebih baik. Aplikasi ini menggunakan [Meongku Web Service API](LINK_TO_API_DOCUMENTATION) yang dapat mengidentifikasi jenis ras kucing dengan akurat, memberikan informasi spesifik tentang ras, dan merekomendasikan produk makanan.
 
-The first thing you need to know is that the service requires authentication to access each service. You need to register to use the service. You can register on the service register. You can register using your name, email, password, and phone number. After successfully registering, you can use the email and password you registered to log in. If you have any ideas to improve the security of this service, please contact us.
+## Fitur Utama
 
-## Mulai
-
-Berikut ini adalah instruksi untuk mengunduh dan menjalankan aplikasi Anda.
+1. **Identifikasi Ras Kucing**: Unggah foto kucing Anda, dan aplikasi akan mengidentifikasi rasnya dengan akurat.
+2. **Informasi Ras Kucing**: Dapatkan informasi mendetail tentang ras kucing Anda termasuk karakteristik fisik, perilaku, dan kebutuhan kesehatan.
+3. **Rekomendasi Produk Makanan**: Berdasarkan ras kucing Anda, aplikasi ini dapat merekomendasikan produk makanan yang cocok untuk kebutuhan nutrisi kucing Anda.
 
 ## Prasyarat
 

@@ -26,7 +26,6 @@
                 android:name="catId"
                 app:argType="integer" />
         </action>
-
     </fragment>
 
 
@@ -46,6 +45,7 @@
         android:id="@+id/navigation_cat"
         android:name="com.example.meongku.ui.main.cat.CatListFragment"
         android:label="Cat List">
+
         <action
             android:id="@+id/action_catListFragment_to_catDetailFragment"
             app:destination="@id/navigation_cat_detail">
@@ -53,10 +53,6 @@
                 android:name="catId"
                 app:argType="integer" />
         </action>
-
-        <action
-            android:id="@+id/action_navigation_cat_to_navigation_home"
-            app:destination="@id/navigation_home" />
     </fragment>
 
     <fragment

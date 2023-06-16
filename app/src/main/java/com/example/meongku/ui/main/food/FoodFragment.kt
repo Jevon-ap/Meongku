@@ -17,11 +17,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.meongku.MainActivity
 import com.example.meongku.api.CatFoodRecommendation.CatFoodRecommendationRequest
 import com.example.meongku.api.CatFoodRecommendation.CatFoodRecommendationResponse
 import com.example.meongku.api.RetrofitClient
 import com.example.meongku.databinding.FragmentFoodBinding
 import com.example.meongku.preference.UserPreferences
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -135,6 +137,18 @@ class FoodFragment : Fragment() {
         }
     }
 
+    fun clearInput() {
+        binding.editTextName.text.clear()
+        binding.radioDry.isChecked = false
+        binding.radioWet.isChecked = false
+        binding.radioAboveOne.isChecked = false
+        binding.radioBelowOne.isChecked = false
+        binding.radioIndoor.isChecked = false
+        binding.radioOutdoor.isChecked = false
+        binding.radioBoth.isChecked = false
+        binding.spinnerRas.setSelection(0)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -152,7 +166,10 @@ class FoodFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
+        clearInput()
         Log.d("FoodFragment", "Fragment resumed")
     }
+
+
 
 }

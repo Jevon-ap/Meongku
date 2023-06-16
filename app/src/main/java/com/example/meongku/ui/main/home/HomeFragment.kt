@@ -167,11 +167,24 @@ class HomeFragment : Fragment() {
         return view
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("FoodFragment", "Fragment started")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("FoodFragment", "Fragment resumed")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("FoodFragment", "Fragment resumed")
     }
 
 }

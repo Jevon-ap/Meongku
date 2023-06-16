@@ -17,7 +17,6 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 - Perangkat Android dengan versi minimal Android 7.0 (Nougat / API level 24). 
 
 ### Pengembangan
-https://cdn.discordapp.com/attachments/1107641056926892122/1119151139028467812/Screenshot_2023-06-16-13-17-18-110_com.example.meongku.jpg
 
 
 ### Menginstal

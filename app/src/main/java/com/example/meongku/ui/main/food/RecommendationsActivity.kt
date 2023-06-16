@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.webkit.URLUtil
 import android.widget.Toast
 import com.example.meongku.databinding.ActivityRecommendationsBinding
@@ -15,6 +16,7 @@ class RecommendationsActivity : AppCompatActivity() {
         binding = ActivityRecommendationsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        supportActionBar?.hide()
 
         val name = intent.getStringExtra("name")
         val brand = intent.getStringExtra("brand")
@@ -22,7 +24,7 @@ class RecommendationsActivity : AppCompatActivity() {
         val race = intent.getStringExtra("race")
         val productLink = intent.getStringExtra("productLink")
 
-        binding.nameTextView.text = "Nama: "+ name
+        binding.nameTextView.text = "Nama Kucing: "+ name
         binding.brandTextView.text = "Merek: "+ brand
         binding.productNameTextView.text = "Nama Produk: "+productName
         binding.raceTextView.text = "Ras: "+race

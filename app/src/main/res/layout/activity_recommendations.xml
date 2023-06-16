@@ -11,7 +11,7 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/cat_product_yellow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -69,6 +69,8 @@ tools:context=".ui.main.food.RecommendationsActivity">
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/raceTextView"
         tools:text="Dapatkan produk" />
 

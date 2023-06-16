@@ -1,4 +1,4 @@
-# Meongku
+# Meongku Android App
 
 ## Deskripsi
 
@@ -22,17 +22,9 @@ Meongku Android App adalah aplikasi mobile yang dirancang untuk membantu pemilik
 
 ## Instalasi
 
-### Melalui Google Drive
-
-1. Buka tautan berikut di browser web Anda: [Masukkan Tautan Google Drive di Sini]
-2. Unduh file APK yang bernama 'Meongku-v1.apk'.
-3. Buka file yang telah diunduh di perangkat Android Anda.
-4. Anda mungkin perlu mengizinkan instalasi dari sumber yang tidak dikenal. Anda dapat melakukannya dengan membuka `Settings > Security` dan memeriksa `Unknown sources`.
-5. Setelah instalasi selesai, Anda dapat membuka aplikasi 'Meongku' dari launcher Android Anda.
-
 ### Melalui GitHub
 
-1. Buka repositori GitHub aplikasi 'Meongku' di browser web Anda: [Masukkan URL Repositori GitHub di Sini]
+1. Buka repositori GitHub aplikasi 'Meongku' di browser web Anda: [LINK](https://github.com/Jevon-ap/Meongku)
 2. Klik `Code` di pojok kanan atas halaman, lalu klik `Download ZIP`.
 3. Ekstrak file ZIP yang telah diunduh.
 4. Buka Android Studio dan pilih `Open an Existing Project`.
@@ -50,9 +42,7 @@ Berikan petunjuk dasar tentang cara menggunakan aplikasi Anda. Anda bisa menyert
 - Aplikasi ini dikembangkan menggunakan Kotlin dan Java 8.
 - Aplikasi ini ditargetkan untuk Android API level 33.
 - Aplikasi di desain menggunakn FIGMA  [KLIK DISINI](https://www.figma.com/file/afKTL6nhRm9K1EvqpZJOrw/Untitled?type=design&node-id=25-214&t=Eu2plum8eh7KxVgD-0)
-Jelaskan tentang proses pengembangan. Ini bisa berupa informasi tentang teknologi yang digunakan, kerangka kerja, pustaka, dll. Jika ada prototipe hi-fi di Figma, berikan tautan ke halaman tersebut.
 
-[Lihat Prototipe di Figma](link-ke-figma-Anda)
 
 ## Tim Pengembang
 

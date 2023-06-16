@@ -152,6 +152,16 @@ class ScanFragment : Fragment() {
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
     }
 
+    private fun showSystemUI() {
+        @Suppress("DEPRECATION")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            requireActivity().window.insetsController?.show(WindowInsets.Type.statusBars())
+        } else {
+            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        }
+    }
+
+
     private fun uploadImage(file: File) {
         val requestFile: RequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
         val body: MultipartBody.Part = MultipartBody.Part.createFormData("image_file", file.name, requestFile)
@@ -203,6 +213,7 @@ class ScanFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        showSystemUI()
         Log.d("ScanFragment", "Fragment view destroyed")
     }
     override fun onResume() {

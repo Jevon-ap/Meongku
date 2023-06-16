@@ -23,11 +23,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.meongku.MainActivity
 import com.example.meongku.R
 import com.example.meongku.api.RetrofitClient
 import com.example.meongku.api.article.Article
 import com.example.meongku.api.article.ArticleResponse
 import com.example.meongku.api.catlist.CatResponse
+import com.example.meongku.databinding.ActivityMainBinding
 import com.example.meongku.databinding.FragmentHomeBinding
 import com.example.meongku.preference.UserPreferences
 import com.example.meongku.ui.edituser.EditPasswordActivity
@@ -36,6 +38,7 @@ import com.example.meongku.ui.main.article.ArticleAdapter
 import com.example.meongku.ui.main.article.ArticleFragmentDirections
 import com.example.meongku.ui.main.cat.CatListFragmentDirections
 import com.example.meongku.ui.main.scan.ScanActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,6 +50,7 @@ class HomeFragment : Fragment() {
     private lateinit var catAdapter: CatListAdapter
     private lateinit var articleAdapter: ArticleAdapter
     private lateinit var retrofitClient: RetrofitClient
+
 
     // This property is only valid between onCreateView and onDestroyView.
     private var _binding: FragmentHomeBinding? = null
@@ -67,6 +71,7 @@ class HomeFragment : Fragment() {
         recyclerView2.layoutManager = LinearLayoutManager(requireContext())
 
         retrofitClient = RetrofitClient(UserPreferences(requireContext()))
+
 
         catAdapter = CatListAdapter() // Instantiate the CatListAdapter
         articleAdapter = ArticleAdapter()
@@ -121,8 +126,8 @@ class HomeFragment : Fragment() {
 
         val tvLinkRas: TextView = binding.tvLinkRas
         tvLinkRas.setOnClickListener {
-            val navController = findNavController()
-            navController.navigate(R.id.navigation_cat)
+            val action = HomeFragmentDirections.actionNavigationHomeToNavigationCat()
+            findNavController().navigate(action)
         }
 
         val tvLinkArticle: TextView = binding.tvLinkArtikel
@@ -169,22 +174,22 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("HomeFragment", "Fragment Destroyed")
         _binding = null
     }
 
     override fun onStart() {
         super.onStart()
-        Log.d("FoodFragment", "Fragment started")
+        Log.d("HomeFragment", "Fragment started")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("FoodFragment", "Fragment resumed")
+        Log.d("HomeFragment", "Fragment resumed")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("FoodFragment", "Fragment resumed")
+        Log.d("HomeFragment", "Fragment paused")
     }
-
 }

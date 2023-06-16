@@ -151,6 +151,7 @@ class FoodFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("FoodFragment", "Fragment destroyed")
         _binding = null
     }
 
@@ -167,7 +168,7 @@ class FoodFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         clearInput()
-        Log.d("FoodFragment", "Fragment resumed")
+        Log.d("FoodFragment", "Fragment paused")
     }
 
 
